@@ -10,46 +10,48 @@ document.addEventListener("DOMContentLoaded", function () {
     "#FFB900", // Oransje
   ];
 
-  // Function to display projects as a table in the main content area
   function displayProjectsTable() {
-    // Example project data - update this with real data
     const projects = [
       {
         name: "Rampenissen IOS app",
         description: "Description 1",
         language: "Swift",
+        githubUrl: "https://github.com/your-username/project1",
       },
       {
         name: "Children of Singularity",
         description: "Description 2",
-        language: "Python, React, Solidity",
+        language: "Python",
+        githubUrl: "https://github.com/your-username/project2",
       },
       {
         name: "Alchemist Wheel",
         description: "Description 3",
-        language: "JavaScript, HTML, CSS",
+        language: "JavaScript",
+        githubUrl: "https://github.com/your-username/project3",
       },
       {
         name: "WikiNuggets",
         description: "Description 4",
-        language: "Python, Flask, HTML, CSS",
+        language: "Java",
+        githubUrl: "https://github.com/your-username/project4",
       },
     ];
 
     let tableHTML = `<h2>Prosjekter</h2>
-                   <table>
-                     <tr>
-                       <th>Navn</th>
-                       <th>Beskrivelse</th>
-                       <th>Kodespråk</th>
-                     </tr>`;
+                     <table>
+                       <tr>
+                         <th>Navn</th>
+                         <th>Beskrivelse</th>
+                         <th>Kodespråk</th>
+                       </tr>`;
 
     projects.forEach((project) => {
       tableHTML += `<tr>
-                    <td>${project.name}</td>
-                    <td>${project.description}</td>
-                    <td>${project.language}</td>
-                  </tr>`;
+                      <td>${project.name} <a href="${project.githubUrl}" target="_blank" class="github-link"><i class="fab fa-github"></i></a></td>
+                      <td>${project.description}</td>
+                      <td>${project.language}</td>
+                    </tr>`;
     });
 
     tableHTML += `</table>`;
