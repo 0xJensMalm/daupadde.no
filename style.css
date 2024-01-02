@@ -35,15 +35,106 @@ body, html {
 
 .menu-item {
     cursor: pointer;
-    padding: 10px;
+    padding: 5px;
     margin-bottom: 10px;
 }
+.project-list {
+    list-style-type: none; /* Removes default bullet points */
+    padding-left: 20px; /* Indent subfolder items */
+  }
+  
+  .project-list li {
+    font-size: 0.9em; /* Slightly smaller font size */
+    padding: 2px 0; /* Reduced padding */
+    margin-left: 10px; /* Further indent subfolder items */
+  }
+  
 
 .main-content {
     width: 70%;
     padding: 20px;
     box-sizing: border-box;
 }
+#terminalMenu {
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap; /* Prevent wrapping to a new line */
+  }
+  
+  #terminalTrigger {
+    cursor: pointer;
+    /* Add any additional styling for the terminal button here */
+  }
+
+/* Terminal Button and Input Field Styling */
+.terminal-emulator {
+    background-color: #1e1e1e; /* Terminal-like background */
+    color: #ffffff; /* Text color */
+    padding: 15px; /* Or as desired */
+    font-family: 'IBM Plex Mono', monospace; /* Match your terminal font */
+    border-radius: 4px; /* Optional, for rounded corners */
+    white-space: pre-wrap; /* Preserves formatting */
+    overflow-x: auto; /* Allows scrolling */
+    /* Additional styles here */
+  }
+  
+  .terminal-input {
+    color: white;
+    background-color: #000;
+    border: 1px solid #666;
+    padding: 5px 10px;
+    font-family: 'IBM Plex Mono', monospace;
+  }
+  
+  /* When displaying the terminal, adjust the display property */
+  .terminal-input.displayed {
+    display: inline-block;
+  }
+  
+  /* Terminal Output Styling */
+  #terminalOutput {
+    color: white;
+    background-color: #1e1e1e; /* Dark background for visibility */
+    padding: 10px;
+    min-height: 20px; /* Adjust as needed */
+    border: 1px solid #666; /* Slight border for definition */
+    margin-bottom: 5px;
+  }
+  
+  /* Main Content Terminal Emulator Styling */
+  .main-content .terminal-emulator {
+    background-color: #2d2d2d; /* Dark background */
+    color: #ccc; /* Light text color */
+    padding: 15px;
+    border-radius: 4px;
+    font-family: 'IBM Plex Mono', monospace;
+    white-space: pre-wrap; /* For proper text wrapping */
+    overflow-x: auto; /* For horizontal scrolling */
+  }
+/* Table Styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: black;
+    color: white;
+  }
+  
+  th, td {
+    border: 1px solid white;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  th {
+    background-color: black;
+  }
+  
+  h2 {
+    color: white;
+  }
+  
+  
+  
 
 footer {
     padding: 10px;

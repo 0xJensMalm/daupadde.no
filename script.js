@@ -10,6 +10,135 @@ document.addEventListener("DOMContentLoaded", function () {
     "#FFB900", // Oransje
   ];
 
+  // Function to display projects as a table in the main content area
+  function displayProjectsTable() {
+    // Example project data - update this with real data
+    const projects = [
+      {
+        name: "Rampenissen IOS app",
+        description: "Description 1",
+        language: "Swift",
+      },
+      {
+        name: "Children of Singularity",
+        description: "Description 2",
+        language: "Python, React, Solidity",
+      },
+      {
+        name: "Alchemist Wheel",
+        description: "Description 3",
+        language: "JavaScript, HTML, CSS",
+      },
+      {
+        name: "WikiNuggets",
+        description: "Description 4",
+        language: "Python, Flask, HTML, CSS",
+      },
+    ];
+
+    let tableHTML = `<h2>Prosjekter</h2>
+                   <table>
+                     <tr>
+                       <th>Navn</th>
+                       <th>Beskrivelse</th>
+                       <th>Kodespråk</th>
+                     </tr>`;
+
+    projects.forEach((project) => {
+      tableHTML += `<tr>
+                    <td>${project.name}</td>
+                    <td>${project.description}</td>
+                    <td>${project.language}</td>
+                  </tr>`;
+    });
+
+    tableHTML += `</table>`;
+
+    const mainContent = document.getElementById("mainContent");
+    mainContent.innerHTML = tableHTML;
+  }
+
+  // Updated Event listeners for main menu items
+  document.querySelectorAll("#defaultMenu .menu-item").forEach((item) => {
+    item.addEventListener("click", function () {
+      const targetId = this.getAttribute("data-target");
+
+      // Display projects table for 'Prosjekter'
+      if (targetId === "prosjekter-content") {
+        displayProjectsTable();
+      } else {
+        const mainContent = document.getElementById("mainContent");
+        mainContent.innerHTML = `<div>Content for ${targetId}</div>`;
+      }
+    });
+  });
+
+  // Toggle Terminal Input Field
+  document
+    .getElementById("terminalTrigger")
+    .addEventListener("click", function () {
+      var commandInput = document.getElementById("commandInput");
+      commandInput.style.display =
+        commandInput.style.display === "none" ? "inline-block" : "none";
+      if (commandInput.style.display === "inline-block") {
+        commandInput.focus();
+      }
+    });
+
+  // Event listener for command input
+  document
+    .getElementById("commandInput")
+    .addEventListener("keypress", function (event) {
+      if (event.key === "Enter") {
+        processCommand(this.value); // Call processCommand with the entered value
+        this.style.display = "none"; // Optionally hide the input field after command is entered
+        this.value = ""; // Clear the input field
+      }
+    });
+
+  // Define the processCommand function
+  function processCommand(command) {
+    var terminalOutput = document.getElementById("mainContent");
+
+    switch (command.toLowerCase()) {
+      case "commands":
+        terminalOutput.innerHTML = `
+          <p>Commands:</p>
+          <ul>
+              <li>- commands</li>
+              <li>- password</li>
+              <li>- theme ls</li>
+              <li>- art</li>
+              <li>- clear</li>
+          </ul>`;
+        break;
+      case "art":
+        if (asciiArts && colorPalette) {
+          displayRandomAsciiArt(asciiArts, colorPalette);
+        }
+        break;
+      case "clear":
+        terminalOutput.innerHTML = "";
+        break;
+      default:
+        terminalOutput.innerHTML = `<p>Unrecognized command: ${command}</p>`;
+    }
+  }
+
+  // Ensure displayRandomAsciiArt function is defined and works correctly
+  // This function should fetch and display ASCII art
+  // Make sure asciiArts and colorPalette variables are available and populated
+  function displayRandomAsciiArt(asciiArts, colorPalette) {
+    // Your logic to display ASCII art here
+    // For demonstration purposes, let's assume asciiArts is an array of strings
+    const randomIndex = Math.floor(Math.random() * asciiArts.length);
+    const asciiArt = asciiArts[randomIndex];
+    const randomColorIndex = Math.floor(Math.random() * colorPalette.length);
+    const color = colorPalette[randomColorIndex];
+    var terminalOutput = document.getElementById("mainContent");
+    terminalOutput.innerHTML = `<pre style="color: ${color};">${asciiArt}</pre>`;
+  }
+
   // Fetch and parse the ASCII art HTML file
   function fetchAsciiArt() {
     return fetch("ascii.html")
@@ -27,92 +156,6 @@ document.addEventListener("DOMContentLoaded", function () {
   fetchAsciiArt().then((arts) => {
     asciiArts = arts;
   });
-
-  // Event listener for terminal trigger
-  document
-    .getElementById("terminalTrigger")
-    .addEventListener("click", function () {
-      var inputArea = document.getElementById("inputArea");
-      inputArea.style.display =
-        inputArea.style.display === "none" ? "flex" : "none";
-      if (inputArea.style.display === "flex") {
-        document.getElementById("commandInput").focus();
-      }
-    });
-
-  // Event listeners for menu items
-  const mainContent = document.getElementById("mainContent");
-  document.querySelectorAll(".menu-item").forEach((item) => {
-    item.addEventListener("click", function () {
-      const targetId = this.getAttribute("data-target");
-
-      // If 'Prosjekter' is clicked, show project list, otherwise show/hide content
-      if (targetId === "prosjekter-content") {
-        mainContent.innerHTML = `
-          <ul class="project-list">
-            <li class="menu-item" data-target="rampenissen-content">- Rampenissen IOS app</li>
-            <li class="menu-item" data-target="singularity-content">- Children of Singularity</li>
-            <li class="menu-item" data-target="alchemist-content">- Alchemist Wheel</li>
-            <li class="menu-item" data-target="wikinuggets-content">- WikiNuggets</li>
-          </ul>
-        `;
-      } else {
-        mainContent.innerHTML = `<div>Content for ${targetId}</div>`;
-      }
-    });
-  });
-
-  // Event listener for command input
-  var commandInput = document.getElementById("commandInput");
-  commandInput.addEventListener("keypress", function (event) {
-    if (event.key === "Enter") {
-      processCommand(this.value);
-      this.value = ""; // Clear the input after command is entered
-    }
-  });
-
-  // Function to process commands
-  function processCommand(command) {
-    var terminalOutput = document.getElementById("terminalOutput");
-
-    switch (command.toLowerCase()) {
-      case "commands":
-        terminalOutput.innerHTML = `
-          <p>Commands:</p>
-          <ul>
-              <li>- commands</li>
-              <li>- password</li>
-              <li>- theme ls</li>
-              <li>- art</li>
-              <li>- clear</li>
-          </ul>`;
-        terminalOutput.style.display = "block";
-        break;
-      case "art":
-        if (asciiArts && colorPalette) {
-          displayRandomAsciiArt(asciiArts, colorPalette);
-        }
-        break;
-      case "clear":
-        terminalOutput.innerHTML = "";
-        terminalOutput.style.display = "none";
-        break;
-      default:
-        terminalOutput.innerHTML = `<p>Ukjent kommando: ${command}</p>`;
-        terminalOutput.style.display = "block";
-    }
-  }
-
-  // Function to display random ASCII art
-  function displayRandomAsciiArt(asciiArts, colorPalette) {
-    const randomArt = asciiArts[Math.floor(Math.random() * asciiArts.length)];
-    const randomColor =
-      colorPalette[Math.floor(Math.random() * colorPalette.length)];
-    var terminalOutput = document.getElementById("terminalOutput");
-    terminalOutput.innerHTML = `<pre style="color: ${randomColor};">${randomArt}</pre>`;
-    terminalOutput.style.display = "block";
-  }
-
   // Function to update visit count
   function updateVisitCount() {
     let count = localStorage.getItem("visitCount");
