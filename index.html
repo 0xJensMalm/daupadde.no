@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <title>Padde Kodeverksted</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>  
+    <header class="image-header">
+        <img src="img/logo.png" alt="Logo">
+    </header>
+    <div id="layoutContainer">
+
+<div id="menuArea" class="menu-area">
+    <div id="defaultMenu">
+        <div class="menu-item" data-target="prosjekter-content">- Prosjekter</div>
+        <div class="menu-item" data-target="om-padde-content">- Om Padde Kodeverksted</div>
+        <div class="menu-item" data-target="terminal-content">- Terminal</div>
+    </div>
+    <div id="prosjekterMenu" class="submenu" style="display: none;">
+        - Prosjekter
+        <ul class="project-list">
+            <li class="menu-item" data-target="rampenissen-content">- Rampenissen IOS app</li>
+            <li class="menu-item" data-target="singularity-content">- Children of Singularity</li>
+            <li class="menu-item" data-target="alchemist-content">- Alchemist Wheel</li>
+            <li class="menu-item" data-target="wikinuggets-content">- WikiNuggets</li>
+        </ul>
+    </div>
+</div>
+
+<!-- ... -->
+
+        <div id="mainContent" class="main-content">
+            <!-- The content sections will be displayed here -->
+        </div>
+    </div>
+    <footer>
+        Du er besøkende nummer: <span id="visitCount">27</span>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
