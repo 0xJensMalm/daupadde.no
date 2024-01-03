@@ -117,12 +117,13 @@ table {
     border-collapse: collapse;
     background-color: black;
     color: white;
+    font-size: small;
   }
   
   th, td {
     border: 1px solid white;
     padding: 8px;
-    text-align: left;
+    text-align: left;   
   }
   
   th {
@@ -133,20 +134,8 @@ table {
     color: white;
   }
   
-  
-  
-
 footer {
     padding: 10px;
     text-align: center;
 }
 
-@media (max-width: 768px) {
-    #layoutContainer {
-        flex-direction: column;
-    }
-
-    .menu-area, .main-content {
-        width: 100%;
-    }
-}

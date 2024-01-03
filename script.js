@@ -13,27 +13,29 @@ document.addEventListener("DOMContentLoaded", function () {
   function displayProjectsTable() {
     const projects = [
       {
-        name: "Rampenissen IOS app",
-        description: "Description 1",
+        name: "Rampenissen iOS app",
+        description:
+          "Rampestrek generator for småbarnsforeldre som egentlig ikke har kreativt overskudd til rampenissen.",
         language: "Swift",
         githubUrl: "https://github.com/your-username/project1",
       },
       {
         name: "Children of Singularity",
-        description: "Description 2",
-        language: "Python",
+        description:
+          "Sosialt eksperiment på Ethereum. En sekt styrt etter medlemenes evne til å løse krypteringsoppgaver i økende vanskelighetsgrad. 6666 unike identiteter døpt på blokkjeden.",
+        language: "Solidity, React, Python",
         githubUrl: "https://github.com/your-username/project2",
       },
       {
         name: "Alchemist Wheel",
         description: "Description 3",
-        language: "JavaScript",
+        language: "HTML, CSS, JavaScript",
         githubUrl: "https://github.com/your-username/project3",
       },
       {
         name: "WikiNuggets",
         description: "Description 4",
-        language: "Java",
+        language: "Python, Flask, HTML, CSS, JavaScript",
         githubUrl: "https://github.com/your-username/project4",
       },
     ];
